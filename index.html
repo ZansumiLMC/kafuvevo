@@ -289,10 +289,59 @@ footer .mini a{transition:color .25s,transform .25s}
 footer .mini a:hover{color:var(--accent);transform:translateY(-2px)}
 .credit a{color:var(--fg);text-decoration:none;font-weight:500;border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .25s,border-color .25s}
 .credit a:hover{color:var(--accent);border-color:var(--accent)}
+/* pantalla de entrada */
+html.locked,html.locked body{overflow:hidden}
+.splash{--n:#ff5577;--ng:rgba(255,85,119,.45);position:fixed;inset:0;z-index:500;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.7rem;padding:2rem;text-align:center;color:#fff;background:radial-gradient(ellipse 70% 62% at 50% 46%,#22334a 0%,#141d27 48%,#090e14 100%);transition:opacity .7s var(--ease),visibility .7s,transform .7s var(--ease)}
+.splash.out{opacity:0;visibility:hidden;transform:scale(1.04);pointer-events:none}
+.sp-t{margin:0;font:800 clamp(2.8rem,11vw,6.2rem)/1 var(--head);letter-spacing:-.04em;color:#f4f6fb;animation:up .9s .1s var(--ease) backwards}
+.sp-t em{font-style:normal;color:var(--n);text-shadow:0 0 28px var(--ng),0 0 60px var(--ng)}
+.sp-btn{font:600 1.05rem var(--body);color:#fff;border:0;cursor:pointer;padding:.85rem 2.5rem;border-radius:999px;background:linear-gradient(180deg,#d9506a,#a62237);box-shadow:0 0 0 3px #0d141c,0 0 0 4.5px var(--n),0 0 30px -6px var(--ng);transition:transform .3s var(--ease),box-shadow .3s;animation:up .9s .3s var(--ease) backwards}
+.sp-btn:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 0 0 3px #0d141c,0 0 0 4.5px var(--n),0 0 40px -2px var(--ng)}
+.sp-btn:active{transform:scale(.98)}
+.sp-btn:focus-visible{outline:3px solid #fff;outline-offset:6px}
+/* reproductor */
+.mp{position:fixed;left:max(1.1rem,env(safe-area-inset-left,0px));bottom:calc(1.1rem + env(safe-area-inset-bottom,0px));z-index:50;display:flex;align-items:center;gap:.75rem;padding:.45rem 1.1rem .45rem .45rem;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--surface) 82%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 12px 30px -14px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(24px) scale(.96);transition:opacity .6s .35s var(--ease),transform .7s .35s var(--ease),visibility .6s .35s,border-color .3s}
+.mp.show{opacity:1;visibility:visible;transform:none}
+.mp:hover{border-color:var(--neon)}
+.mp .cv{position:relative;flex:none;width:52px;height:52px;border-radius:50%;overflow:hidden;border:1.5px solid var(--neon);box-shadow:0 0 12px var(--neon-glow);background:var(--surface2);animation:disc 8s linear infinite;animation-play-state:paused}
+.mp.playing .cv{animation-play-state:running}
+.mp .cv::before{content:"♪";position:absolute;inset:0;display:grid;place-items:center;font:800 1.4rem var(--head);color:var(--accent)}
+.mp .cv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@keyframes disc{to{transform:rotate(360deg)}}
+.mp button{display:grid;place-items:center;border:0;cursor:pointer;color:inherit;background:none;padding:0}
+.mp svg{width:20px;height:20px;fill:currentColor}
+.mp .pp{flex:none;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;transition:transform .3s var(--ease),box-shadow .3s}
+.mp .pp:hover{transform:scale(1.08);box-shadow:0 0 18px -2px var(--neon-glow)}
+.mp .pp:active{transform:scale(.95)}
+.mp.err .pp{opacity:.4;pointer-events:none}
+.mp .vl{display:flex;align-items:center;gap:.3rem}
+.mp .vb{width:34px;height:34px;border-radius:50%;color:var(--muted);transition:color .25s}
+.mp .vb:hover{color:var(--fg)}
+.mp input[type=range]{-webkit-appearance:none;appearance:none;width:84px;height:20px;margin:0;background:transparent;cursor:pointer;--p:50%}
+.mp input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:9px;background:linear-gradient(90deg,var(--neon) var(--p),var(--line) var(--p))}
+.mp input[type=range]::-moz-range-track{height:4px;border-radius:9px;background:var(--line)}
+.mp input[type=range]::-moz-range-progress{height:4px;border-radius:9px;background:var(--neon)}
+.mp input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;margin-top:-5px;border-radius:50%;border:0;background:#fff;box-shadow:0 0 8px var(--neon-glow)}
+.mp input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;border:0;background:#fff;box-shadow:0 0 8px var(--neon-glow)}
+@media (max-width:520px){.mp{bottom:calc(5.2rem + env(safe-area-inset-bottom,0px))}footer{padding-bottom:9.5rem}}
+/* datos de contacto */
+.dets{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1rem;margin:0 0 2rem}
+.det{display:flex;align-items:center;gap:1rem;border:1px solid var(--line);background:var(--surface);border-radius:20px;padding:1rem 1.1rem;transition:border-color .25s,box-shadow .3s}
+.det:hover{border-color:var(--neon);box-shadow:0 0 22px -6px var(--neon-glow)}
+.det>svg{flex:none;width:28px;height:28px;fill:var(--accent)}
+.det div{min-width:0;flex:1}
+.det small{display:block;font:700 .7rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.det b{display:block;font:500 1.02rem/1.3 var(--body);overflow-wrap:anywhere;-webkit-user-select:all;user-select:all}
+.det .btn{flex:none;padding:.5rem 1rem;font-size:.82rem}
+.det .btn.ok{background:#2f8f5b;border-color:#2f8f5b;color:#fff}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.pulse,.spot,.sweep{display:none}}
 </style>
 </head>
 <body>
+<div class="splash" id="splash" role="dialog" aria-modal="true" aria-label="Pantalla de entrada">
+  <p class="sp-t">Kafu<em>Vevo</em></p>
+  <button type="button" class="sp-btn" id="enter">Click to enter</button>
+</div>
 <header>
   <div class="wrap bar">
     <a class="logo" href="#inicio" aria-label="KafuVevo, inicio"><img class="lav" src="assets/avatar.png" alt="" onerror="this.remove()"><span class="lt"><span class="nm">Kafu<span>Vevo</span></span><small>Creador de contenido · Artista digital</small></span></a>
@@ -407,6 +456,7 @@ footer .mini a:hover{color:var(--accent);transform:translateY(-2px)}
       <p>Estoy abierto a colaboraciones, campañas creativas, participaciones en eventos y proyectos que encajen con mi contenido. Si tienes una propuesta, hablemos.</p>
       <div class="row"><a class="btn" href="https://discord.gg/2hfYFRqpVK" target="_blank" rel="noopener noreferrer">Proponer una colaboración</a></div>
     </div>
+    <div class="dets" id="dets"></div>
     <div class="soc" id="soc"></div>
   </div>
 </section>
@@ -436,6 +486,15 @@ footer .mini a:hover{color:var(--accent);transform:translateY(-2px)}
     <div class="mini" data-mini></div>
   </div>
 </footer>
+
+<aside class="mp" id="mp" aria-label="Reproductor de música">
+  <div class="cv"><img id="mpCv" alt="" onerror="this.remove()"></div>
+  <button type="button" class="pp" id="mpPlay" aria-label="Reproducir"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="mpPi" d="M8 5v14l11-7z"/></svg></button>
+  <div class="vl">
+    <button type="button" class="vb" id="mpMute" aria-label="Silenciar"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="mpVi" d=""/></svg></button>
+    <input type="range" id="mpVol" min="0" max="100" step="1" value="50" aria-label="Volumen">
+  </div>
+</aside>
 
 <a class="pgnext" id="pgnext" href="#sobre-mi"><span class="txt"><small>Siguiente</small><b>Sobre mí</b></span><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
 
@@ -501,6 +560,10 @@ const VIDEOS=[
  {id:"6eZBEvNKPKA",t:"Sobrevivi en Cobblemon de Ice Bear Polar 2026"},
  {id:"BS2TRdhL_LA",t:"Sobrevivi en Cobblemon de Godzilla Bloodbath"}
 ];
+// Contacto (se muestran en la sección Contacto y se pueden copiar con un clic)
+const EMAIL="vevokafu@gmail.com",DISCORD_USER="kafurex";
+// Música: ruta del mp3, imagen del reproductor y volumen inicial (0 a 1)
+const MUSIC={src:"assets/Human Music... (But it's Peak).mp3",cover:"assets/avatar.png",volume:.5};
 const VIEWS=[["inicio","Inicio"],["sobre-mi","Sobre mí"],["portafolio","Portafolio"],["comisiones","Comisiones"],["contacto","Contacto"]];
 /* ===== FIN CONFIGURACIÓN ===== */
 
@@ -668,6 +731,51 @@ $("#close").onclick=()=>lb.close();
 $("#prev").onclick=()=>show(idx-1);$("#next").onclick=()=>show(idx+1);
 lb.addEventListener("click",e=>{if(e.target===lb)lb.close()});
 lb.addEventListener("keydown",e=>{if(e.key==="ArrowLeft")show(idx-1);if(e.key==="ArrowRight")show(idx+1)});
+
+// contacto: correo y Discord copiables
+const MAIL_ICO="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z";
+const CONTACTS=[{k:"Correo",v:EMAIL,i:MAIL_ICO},{k:"Discord",v:DISCORD_USER,i:SOCIALS[2].i}];
+$("#dets").innerHTML=CONTACTS.map(c=>`<div class="det">${ico(c.i)}<div><small>${c.k}</small><b>${esc(c.v)}</b></div><button type="button" class="btn ghost" data-copy="${esc(c.v)}" aria-live="polite">Copiar</button></div>`).join("");
+function copyText(t){
+  if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t);
+  return new Promise((ok,no)=>{const a=document.createElement("textarea");a.value=t;a.setAttribute("readonly","");a.style.cssText="position:fixed;top:0;opacity:0";document.body.append(a);a.select();let r=false;try{r=document.execCommand("copy")}catch(e){}a.remove();r?ok():no()});
+}
+$("#dets").onclick=async e=>{
+  const b=e.target.closest("[data-copy]");if(!b)return;
+  clearTimeout(b._t);
+  try{await copyText(b.dataset.copy);b.textContent="¡Copiado!";b.classList.add("ok")}
+  catch(err){b.textContent="Selecciona y copia"}
+  b._t=setTimeout(()=>{b.textContent="Copiar";b.classList.remove("ok")},1800);
+};
+
+// pantalla de entrada + reproductor de música
+const au=new Audio(encodeURI(MUSIC.src));au.loop=true;au.preload="auto";au.volume=MUSIC.volume;
+const mp=$("#mp"),mpPlay=$("#mpPlay"),mpPi=$("#mpPi"),mpMute=$("#mpMute"),mpVi=$("#mpVi"),mpVol=$("#mpVol");
+const PI={play:"M8 5v14l11-7z",pause:"M6 5h4v14H6zm8 0h4v14h-4z"};
+const VI={h:"M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z",l:"M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z",m:"M3 9v6h4l5 5V4L7 9H3zm10.6 3-2.7 2.7 1.4 1.4 2.7-2.7 2.7 2.7 1.4-1.4-2.7-2.7 2.7-2.7-1.4-1.4-2.7 2.7-2.7-2.7-1.4 1.4z"};
+let lastVol=MUSIC.volume||.5;
+$("#mpCv").src=MUSIC.cover;
+function paintPlay(){const on=!au.paused;mp.classList.toggle("playing",on);mpPi.setAttribute("d",on?PI.pause:PI.play);mpPlay.setAttribute("aria-label",on?"Pausar":"Reproducir")}
+function paintVol(){const v=au.muted?0:au.volume;mpVol.value=Math.round(v*100);mpVol.style.setProperty("--p",mpVol.value+"%");mpVi.setAttribute("d",v===0?VI.m:v<.5?VI.l:VI.h);mpMute.setAttribute("aria-label",v===0?"Activar sonido":"Silenciar")}
+au.addEventListener("play",paintPlay);au.addEventListener("pause",paintPlay);
+au.addEventListener("error",()=>{mp.classList.add("err");mpPlay.title="No se encontró el audio: "+MUSIC.src});
+mpPlay.onclick=()=>{au.paused?au.play().catch(()=>{}):au.pause()};
+mpVol.oninput=()=>{au.volume=mpVol.value/100;au.muted=false;if(au.volume>0)lastVol=au.volume;paintVol()};
+mpMute.onclick=()=>{if(au.muted||au.volume===0){au.muted=false;if(au.volume===0)au.volume=lastVol}else{lastVol=au.volume;au.muted=true}paintVol()};
+paintPlay();paintVol();
+
+const splash=$("#splash"),lockedEls=$$("header,main,footer,#pgnext");
+lockedEls.forEach(el=>el.inert=true);
+document.documentElement.classList.add("locked");
+$("#enter").focus({preventScroll:true});
+$("#enter").onclick=()=>{
+  splash.classList.add("out");
+  document.documentElement.classList.remove("locked");
+  lockedEls.forEach(el=>el.inert=false);
+  mp.classList.add("show");
+  au.play().catch(()=>{});
+  setTimeout(()=>splash.remove(),900);
+};
 </script>
 </body>
 </html>
