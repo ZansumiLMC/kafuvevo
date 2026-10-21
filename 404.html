@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>KafuVevo · Redirigiendo…</title>
+<!-- GitHub Pages sirve este archivo en cualquier ruta que no existe (/sobre-mi, /portafolio, /lo-que-sea).
+     Lo manda a index.html, que muestra la página correcta o el 404 de la web. -->
+<script>
+  var l = location;
+  var REPO = "Kafurex"; // igual que en index.html ("" si usas dominio propio o usuario.github.io)
+  var keep = (REPO && (l.pathname.indexOf("/" + REPO + "/") === 0 || l.pathname === "/" + REPO)) ? 1 : 0;
+  l.replace(
+    l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+    l.pathname.split('/').slice(0, 1 + keep).join('/') + '/?/' +
+    l.pathname.slice(1).split('/').slice(keep).join('/').replace(/&/g, '~and~') +
+    (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+    l.hash
+  );
+</script>
+</head>
+<body style="background:#141d27;color:#EFE8DF;font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0">
+<p>Redirigiendo…</p>
+<noscript><p><a href="/" style="color:#C8425B">Ir al inicio</a></p></noscript>
+</body>
+</html>
