@@ -9,8 +9,8 @@
      Lo manda a index.html, que muestra la página correcta o el 404 de la web. -->
 <script>
   var l = location;
-  var REPO = "Kafurex"; // igual que en index.html ("" si usas dominio propio o usuario.github.io)
-  var keep = (REPO && (l.pathname.indexOf("/" + REPO + "/") === 0 || l.pathname === "/" + REPO)) ? 1 : 0;
+  var REPO = "kafuvevo"; // igual que en index.html ("" si usas dominio propio o usuario.github.io)
+  var keep = (REPO && new RegExp("^/" + REPO + "(/|$)", "i").test(l.pathname)) ? 1 : 0;
   l.replace(
     l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
     l.pathname.split('/').slice(0, 1 + keep).join('/') + '/?/' +

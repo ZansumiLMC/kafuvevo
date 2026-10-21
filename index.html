@@ -6,8 +6,9 @@
 /* URLs limpias (/sobre-mi, /portafolio…). En GitHub Pages las rutas desconocidas pasan por 404.html, que vuelve aquí. */
 (function(){var l=location;
 if(l.protocol==="file:"){window.__BASE="";return}
-var REPO="Kafurex"; /* nombre del repositorio en GitHub Pages; si usas dominio propio o usuario.github.io pon "" */
-var b=(REPO&&(l.pathname.indexOf("/"+REPO+"/")===0||l.pathname==="/"+REPO))?"/"+REPO+"/":"/";window.__BASE=b;
+var REPO="kafuvevo"; /* nombre del repositorio en GitHub Pages; si usas dominio propio o usuario.github.io pon "" */
+var m=REPO&&l.pathname.match(new RegExp("^/("+REPO+")(/|$)","i"));
+var b=m?"/"+m[1]+"/":"/";window.__BASE=b;
 if(l.search[1]==="/"){var q=l.search.slice(1).split("&").map(function(x){return x.replace(/~and~/g,"&")}).join("?");history.replaceState(null,null,l.pathname.slice(0,-1)+q+l.hash)}
 document.write('<base href="'+b+'">');
 })();
@@ -20,15 +21,15 @@ document.write('<base href="'+b+'">');
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="KafuVevo">
 <meta property="og:locale" content="es_ES">
-<meta property="og:url" content="https://zansumilmc.github.io/Kafurex/">
-<meta property="og:image" content="https://zansumilmc.github.io/Kafurex/assets/og-image.png">
+<meta property="og:url" content="https://zansumilmc.github.io/kafuvevo/">
+<meta property="og:image" content="https://zansumilmc.github.io/kafuvevo/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="KafuVevo: banner con la foto de perfil de Kafu">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="KafuVevo · Creador de contenido y artista digital">
 <meta name="twitter:description" content="Contenido, caos y creatividad. Portafolio, comisiones y colaboraciones.">
-<meta name="twitter:image" content="https://zansumilmc.github.io/Kafurex/assets/og-image.png">
+<meta name="twitter:image" content="https://zansumilmc.github.io/kafuvevo/assets/og-image.png">
 <meta name="theme-color" content="#1D2935">
 <link rel="icon" type="image/png" href="assets/avatar.png">
 <link rel="apple-touch-icon" href="assets/avatar.png">
